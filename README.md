@@ -1,17 +1,6 @@
-# Python template
+# RL Experiments
 
-A template for starting Python 3 projects.
-
-## Use
-
-When you use this repo as template, you have to chage:
-
-- This README
-- The LICENSE
-- Package name and info
-- Add dependencies
-- Personalize editor infos (e.g. python path in .vim/)
-
+A protocol / template for Reinforcement learning experiments.
 
 ## Install
 This package can be installed as usual:
@@ -32,3 +21,7 @@ If installed with poetry, you can run the main function with:
 or specific scripts with:
 
     poetry run python scripts/<python-file>
+
+## Use
+
+Usage to be upadated as I choose how to execute it
