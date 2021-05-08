@@ -1,0 +1,12 @@
+# Structure of a metrics file
+
+episode:  # metrics recorded once per each episode
+  total-reward: [0.0]  # sum of rewards
+  discounted-reward: [0.0]  # sum of discounted rewards
+  length: [0]  # number of steps
+  duration: [0]  # duration of the episode in seconds
+
+duration: 0.0  # total training time in seconds
+samples: 0  # total number of transitions oberved from the real environment
+
+optional: {}  # dictionary of additional metrics of interest
