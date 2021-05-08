@@ -444,6 +444,21 @@ docs = ["pygments-github-lexers (>=0.0.5)", "sphinx (>=2.0.0)", "sphinxcontrib-a
 testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "psutil (>=5.6.1)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)", "pytest-xdist (>=1.22.2)", "pathlib2 (>=2.3.3)"]
 
 [[package]]
+name = "training-paths"
+version = "0.1.0"
+description = "Tiny tools to create directories used for training"
+category = "main"
+optional = false
+python-versions = "^3.7"
+develop = false
+
+[package.source]
+type = "git"
+url = "https://github.com/cipollone/training-paths.git"
+reference = "master"
+resolved_reference = "4dd556e7be974a59e18fe4ce5fe6c12c0f8f522c"
+
+[[package]]
 name = "traitlets"
 version = "5.0.5"
 description = "Traitlets Python configuration system"
@@ -515,7 +530,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "eacc7810aa5ed6a951bc7bb60ad7c52067eb718dce8df6cf4f953bb9c7a6f427"
+content-hash = "f260939b0d8945fac530792c26d6037f88c78171a7cd2270af7f1b9a68d6cd4b"
 
 [metadata.files]
 appdirs = [
@@ -763,6 +778,7 @@ tox = [
     {file = "tox-3.23.0-py2.py3-none-any.whl", hash = "sha256:e007673f3595cede9b17a7c4962389e4305d4a3682a6c5a4159a1453b4f326aa"},
     {file = "tox-3.23.0.tar.gz", hash = "sha256:05a4dbd5e4d3d8269b72b55600f0b0303e2eb47ad5c6fe76d3576f4c58d93661"},
 ]
+training-paths = []
 traitlets = [
     {file = "traitlets-5.0.5-py3-none-any.whl", hash = "sha256:69ff3f9d5351f31a7ad80443c2674b7099df13cc41fc5fa6e2f6d3b0330b0426"},
     {file = "traitlets-5.0.5.tar.gz", hash = "sha256:178f4ce988f69189f7e523337a3e11d91c786ded9360174a3d9ca83e79bc5396"},

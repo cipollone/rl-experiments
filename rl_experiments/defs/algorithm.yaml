@@ -1,6 +1,6 @@
 # Definition of a specific algorithm
 
-name: name   # algorithm unique name
+name: algorithm   # algorithm unique name
 repository: repository  # algorithm source code
 commit: version   # algorithm specific version
 diff: ""   # if present, the git diff since commit.

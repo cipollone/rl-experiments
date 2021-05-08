@@ -1,11 +1,12 @@
 # Definition of an experiment
 
+name: experiment  # any name for this experiment
 comment: comment  # the purpose of the experiment
-environment: {}  # path to an environment.yaml
-algorithm: {}  # path to an algorithm.yaml
+environment: {}  # format of an environment.yaml
+algorithm: {}  # format of an algorithm.yaml
 n-runs: 1  # how many parallel runs to execute
 
 # command to execute a single run
 #   to this command we'll append "--params config.yaml".
 #   config.yaml will be the configuration for this run
-run-command: ""  # Command to execute a single run
+run-command: "training command ..."  # Command to execute a single run

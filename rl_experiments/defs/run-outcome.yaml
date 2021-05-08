@@ -4,6 +4,6 @@ start: ""  # start date of the run
 end: ""  # end date of the run
 seed: 0  # global seed used for this run
 outdir: ""  # absolute path where training results are saved
-metrics: {}  # see metrics.yaml
-environment: {}  # see environment.yaml
-algorithm: {}  # see algorithm.yaml
+metrics: {}  # format of a metrics.yaml
+environment: {}  # format of an environment.yaml
+algorithm: {}  # format of an algorithm.yaml

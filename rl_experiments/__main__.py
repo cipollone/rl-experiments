@@ -21,9 +21,9 @@ def main():
         choices=formats.format_files.keys(),
     )
     format_parser.add_argument(
-        "--merge",
+        "--comment",
         action="store_true",
-        help="Merge nested files (removing comments).",
+        help="Print a single file, not nested components, with comments.",
     )
 
     train_parser = subparsers.add_parser(
@@ -42,7 +42,7 @@ def main():
 
     # Do
     if args.op == "show-format":
-        formats.print_format(args.file, merge=args.merge)
+        formats.print_format(args.file, merge=not args.comment)
     if args.op == "train":
         train.start(args.experiment)
 
