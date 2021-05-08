@@ -3,4 +3,9 @@
 comment: comment  # the purpose of the experiment
 env-params: {}  # a dict of environment parameters
 alg-params: {}  # a dict of algorithm parameters
-n-runs: 1  # How many parallel runs to execute
+n-runs: 1  # how many parallel runs to execute
+
+# command to execute a single run
+#   to this command we'll append "--params config.yaml".
+#   config.yaml will be the configuration for this run
+run-command: ""  # Command to execute a single run

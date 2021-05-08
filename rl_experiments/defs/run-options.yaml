@@ -1,0 +1,7 @@
+# Format of the parameters file that we pass to the main command
+
+params:
+  env: {}  # a dict of paremters for the environment
+  alg: {}  # a dict of paremters for the algorithm
+  seed: 0  # global seed to be set everywhere
+  outdir: ""  # an absolute path where to save results

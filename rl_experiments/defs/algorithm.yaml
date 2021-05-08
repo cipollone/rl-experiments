@@ -4,5 +4,4 @@ name: name   # algorithm unique name
 repository: repository  # algorithm source code
 commit: version   # algorithm specific version
 diff: ""   # if present, the git diff since commit.
-params:  # a dict of parameters. Seed and possibly any other.
-  seed: 0  # input seed 
+params:  # a dict of parameters

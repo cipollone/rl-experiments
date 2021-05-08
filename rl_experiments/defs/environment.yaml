@@ -4,5 +4,4 @@ name: name   # environment unique name
 repository: repository  # algorithm source code
 commit: version   # environment specific version
 diff: ""   # if present, the git diff since commit used for this run.
-params:  # a dict of environment parameters. Seed and possibly any other.
-  seed: 0  # input seed 
+params:  # a dict of environment parameters.
