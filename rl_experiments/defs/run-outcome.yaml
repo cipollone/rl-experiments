@@ -1,9 +1,5 @@
-# Specification of a run
+# Results of a run
 
 start: ""  # start date of the run
 end: ""  # end date of the run
-seed: 0  # global seed used for this run
-outdir: ""  # absolute path where training results are saved
 metrics: {}  # format of a metrics.yaml
-environment: {}  # format of an environment.yaml
-algorithm: {}  # format of an algorithm.yaml
