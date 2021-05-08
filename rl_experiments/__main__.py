@@ -34,6 +34,7 @@ def main():
         "-e",
         "--experiment",
         type=str,
+        required=True,
         help="an experiment.yaml file"
     )
 

@@ -1,5 +1,6 @@
 # Project
 /outputs/
+/inputs/
 
 # Development
 .python-version
