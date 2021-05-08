@@ -1,7 +1,8 @@
 # Format of the parameters file that we pass to the main command
 
-params:
-  env: {}  # a dict of paremters for the environment
-  alg: {}  # a dict of paremters for the algorithm
-  seed: 0  # global seed to be set everywhere
-  outdir: ""  # an absolute path where to save results
+environment: {}  # see environment.yaml
+algorithm: {}  # see algorithm.yaml
+seed: 0  # global seed to be set everywhere
+model-dir: ""  # a path where to save agent models
+logs-dir: ""  # a path where to save logs. We expect to find
+              #   a run-outcome.yaml file here after the run.

@@ -1,8 +1,8 @@
 # Definition of an experiment
 
 comment: comment  # the purpose of the experiment
-env-params: {}  # a dict of environment parameters
-alg-params: {}  # a dict of algorithm parameters
+environment: {}  # path to an environment.yaml
+algorithm: {}  # path to an algorithm.yaml
 n-runs: 1  # how many parallel runs to execute
 
 # command to execute a single run
