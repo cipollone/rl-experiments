@@ -1,6 +1,7 @@
 """Starts a training (an experiment)."""
 
 import shutil
+import subprocess
 import tempfile
 import time
 from pathlib import Path
@@ -60,4 +61,5 @@ def start_run(params: dict, run_number: int, experiment_file: str):
 
     # Launch
     print("Executing:", run_command)
-    time.sleep(1)
+    time.sleep(1.2)
+    subprocess.run(run_command, capture_output=False, shell=True)
