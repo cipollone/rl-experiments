@@ -3,5 +3,5 @@
 name: algorithm   # algorithm unique name
 repository: repository  # algorithm source code
 commit: version   # algorithm specific version
-diff: ""   # if present, the git diff since commit.
+diff: ""   # an optional path to a git patch file (or empty string if worktree is clean)
 params:  # a dict of parameters

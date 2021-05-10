@@ -58,8 +58,18 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     # Save files
     shutil.copy(experiment_file, logs_path / "experiment.yaml")
     shutil.copy(options_file.name, logs_path / "run-options.yaml")
+    if params["environment"]["diff"]:
+        shutil.copy(
+            params["environment"]["diff"],
+            logs_path / "environment-diff.patch",
+        )
+    if params["algorithm"]["diff"]:
+        shutil.copy(
+            params["algorithm"]["diff"],
+            logs_path / "algorithm-diff.patch",
+        )
 
     # Launch
     print("Executing:", run_command)
-    time.sleep(1.2)
+    time.sleep(2)
     subprocess.run(run_command, capture_output=False, shell=True)
