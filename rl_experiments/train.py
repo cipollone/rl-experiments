@@ -30,10 +30,13 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     seed = int(time.time())
 
     # Select unique directories for this run
-    scope = params["environment"]["name"] + "-" + params["algorithm"]["name"]
+    output_base = (
+        Path.cwd() / params["output-base"]
+        if params["output-base"] else Path.cwd()
+    )
     models_path, logs_path = training_paths.get_paths(
-        base=Path.cwd() / params["name"],
-        scope=scope,
+        base=output_base,
+        scope=params["name"],
         add=(run_number != 0),
     )
 

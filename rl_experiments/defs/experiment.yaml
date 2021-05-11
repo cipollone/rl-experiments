@@ -2,9 +2,12 @@
 
 name: experiment  # any name for this experiment
 comment: comment  # the purpose of the experiment
+
 environment: {}  # format of an environment.yaml
 algorithm: {}  # format of an algorithm.yaml
+
 n-runs: 1  # how many parallel runs to execute
+output-base: ''  # the base directory for outputs. Can be empty
 
 # command to execute a single run
 #   to this command we'll append "--params config.yaml".
