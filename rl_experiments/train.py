@@ -52,15 +52,21 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     run_options["logs-dir"] = str(logs_path)
 
     # Save run options
-    options_file = tempfile.NamedTemporaryFile(suffix=".yaml", mode="w+")
+    options_file = tempfile.NamedTemporaryFile(
+        suffix="-run-options.yaml", mode="w+")
     yaml.dump(run_options, options_file)
 
     # Compose run command
+    run_command_comment = (
+        "# To re-execute, just change path of --params file\n"
+        "#   to the run-options.yaml file in this directory\n")
     run_command = run_command + " --params " + options_file.name
 
     # Save files
     shutil.copy(experiment_file, logs_path / "experiment.yaml")
     shutil.copy(options_file.name, logs_path / "run-options.yaml")
+    with open(logs_path / "run-command.sh", "w") as f:
+        f.write(run_command_comment + run_command)
     if params["environment"]["diff"]:
         shutil.copy(
             params["environment"]["diff"],

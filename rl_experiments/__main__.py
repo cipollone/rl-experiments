@@ -43,8 +43,10 @@ def main():
     # Do
     if args.op == "show-format":
         formats.print_format(args.file, merge=not args.comment)
-    if args.op == "train":
+    elif args.op == "train":
         train.start(args.experiment)
+    else:
+        print("Nothing to do")
 
 
 if __name__ == "__main__":
