@@ -24,22 +24,29 @@ Or simply omit `poetry run` if installed with pip. Obtain help with `--help` opt
 ## Use
 
 This tiny software executes a training command and passes options to the
-training algorithm. From a code perspective, this does almost nothing. What
-matters instead is the convention that we adopt regarding what a generic
-training algorithm should have as input and outputs.
+training algorithm. The actual code is small. What matters instead is the
+convention that we adopt regarding what a generic training algorithm should
+have as input and outputs.
 
-The input is a Yaml file containing a specification of an experiment. To see
-the accepted format call:
+The input for this program is a Yaml file containing a specification of an
+experiment. This file is in a format that we call `experiment.yaml`. To see its
+content, run:
 
 	python -m rl_experiments show-format experiment.yaml
 
-If you want to understand the fields, print it with comments, with the
-`--comments` option. In this case, you may need to also show the format of
-nested configurations.
+As you can see, the `show-format` command shows how a specific file format
+should be. If you want to start from this basic file as a template, just
+redirect it to a file. In linux we could write
+`show-format format-name.yaml > format-name.yaml`. To better understand the
+fields of a format, you could use the `--comments` option. In this case,
+nested formats won't be substituted, and you may also need to show the format
+of nested configurations.
 
-Any training algorithm is expected to accept a `--params` option that allows
-to receive a file in the `run-options.yaml` format (you may still use
-`show-format` command to understand it). The algorithm must respect the given
-seed, and assign it everywhere is needed.
+The training algorithm that this small program will start is any executable
+that accept a `--params "file-path".yaml` option as last argument. The
+`"file-path".yaml` is a file of parameters in the `run-options.yaml` format.
+The algorithm must respect the given seed (assign it everywhere is needed) and
+output directories. It should also allow indipendent runs.
 
-We expect the algorithm to generate a file in the `run-outcome.yaml` format.
+Even though not strictly necessary, we expect the algorithm to generate a file
+in the `run-outcome.yaml` format.
