@@ -1,7 +1,8 @@
 # Definition of a specific environment
 
 name: environment   # environment unique name
+version: version   # environment specific version
 repository: repository  # algorithm source code
-commit: version   # environment specific version
+commit: hash   # hash of the last commit
 diff: ""   # an optional path to a git patch file (or empty string if worktree is clean)
 params: {}  # a dict of parameters.
