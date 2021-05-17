@@ -1,7 +1,7 @@
 # Structure of a metrics file
 
 training:  # training metrics
-  - {}  # stats.yaml format
+  {}  # stats.yaml format
 evaluation:  # evaluation metrics
   episode: {}  # episode is the moment when evaluation started to stats.yaml format
 
