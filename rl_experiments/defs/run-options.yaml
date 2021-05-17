@@ -2,6 +2,9 @@
 
 environment: {}  # see environment.yaml
 algorithm: {}  # see algorithm.yaml
+evaluation:
+  frequency: 0  # number of episodes between each evaluation
+  episodes: 0  # number of episodes to evaluate
 seed: 0  # global seed to be set everywhere
 model-dir: ""  # a path where to save agent models
 logs-dir: ""  # a path where to save logs. We expect to find

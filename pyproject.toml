@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rl-experiments"
-version = "0.1.0"
+version = "0.1.1"
 description = "A protocol for RL experiments"
 authors = ["Roberto Cipollone <cipollone.rt@gmail.com>"]
 include = ["**/*.yaml"]

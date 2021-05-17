@@ -6,6 +6,10 @@ comment: comment  # the purpose of the experiment
 environment: {}  # format of an environment.yaml
 algorithm: {}  # format of an algorithm.yaml
 
+evaluation:
+  frequency: 0  # number of episodes between each evaluation
+  episodes: 0  # number of episodes to evaluate
+
 n-runs: 1  # how many parallel runs to execute
 output-base: ''  # the base directory for outputs. Can be empty
 

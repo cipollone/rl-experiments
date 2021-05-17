@@ -29,6 +29,7 @@ def compose(format_name: str) -> dict:
 
             # Load sub
             data[k] = compose(format_names[k])
+    # TODO: subs recursively
 
     return data
 

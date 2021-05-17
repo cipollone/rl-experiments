@@ -1,0 +1,7 @@
+# Statistics to be collected
+
+# One entry per episode
+total-reward: [0.0]  # sum of rewards
+discounted-reward: [0.0]  # sum of discounted rewards
+length: [0]  # number of steps
+duration: [0]  # duration of the episode in seconds
