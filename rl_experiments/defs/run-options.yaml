@@ -9,3 +9,7 @@ seed: 0  # global seed to be set everywhere
 model-dir: ""  # a path where to save agent models
 logs-dir: ""  # a path where to save logs. We expect to find
               #   a run-outcome.yaml file here after the run.
+
+# About this software
+rl-experiments:
+  version: 0.1.0  # Current version of rl_experiments
