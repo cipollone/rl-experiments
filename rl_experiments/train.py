@@ -20,8 +20,14 @@ def start(experiment_file: str):
         params = yaml.safe_load(f)
 
     # Run all
+    processes = []
     for i in range(params["n-runs"]):
-        start_run(params, run_number=i, experiment_file=experiment_file)
+        processes.append(
+            start_run(params, run_number=i, experiment_file=experiment_file))
+
+    # Wait all
+    while any((proc.poll() is None for proc in processes)):
+        time.sleep(5)
 
 
 def start_run(params: dict, run_number: int, experiment_file: str):
@@ -87,4 +93,4 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     # Launch
     print("Executing:", run_command)
     time.sleep(2)
-    subprocess.run(run_command, capture_output=False, shell=True)
+    return subprocess.Popen(run_command, shell=True)
