@@ -21,9 +21,12 @@ def start(experiment_file: str):
 
     # Run all
     processes = []
+    proc_data = []
     for i in range(params["n-runs"]):
-        processes.append(
-            start_run(params, run_number=i, experiment_file=experiment_file))
+        proc, data = start_run(
+            params, run_number=i, experiment_file=experiment_file)
+        processes.append(proc)
+        proc_data.append(data)
 
     # Wait all
     while any((proc.poll() is None for proc in processes)):
@@ -93,4 +96,8 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     # Launch
     print("Executing:", run_command)
     time.sleep(2)
-    return subprocess.Popen(run_command, shell=True)
+    proc = subprocess.Popen(run_command, shell=True)
+
+    # Ret
+    data = {options_file}
+    return proc, data
