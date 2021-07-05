@@ -38,15 +38,14 @@ As you can see, the `show-format` command shows how a specific file format
 should be. If you want to start from this basic file as a template, just
 redirect it to a file. In linux we could write
 `show-format format-name.yaml > format-name.yaml`. To better understand the
-fields of a format, you could use the `--comments` option. In this case,
-nested formats won't be substituted, and you may also need to show the format
-of nested configurations.
+fields of a format with comments, you could use the `--comments` option.  In
+this case, nested formats won't be substituted.
 
-The training algorithm that this small program will start is any executable
-that accept a `--params "file-path".yaml` option as last argument. The
-`"file-path".yaml` is a file of parameters in the `run-options.yaml` format.
-The algorithm must respect the given seed (assign it everywhere is needed) and
-output directories. It should also allow indipendent runs.
+This small program will start any executable that accepts a
+`--params "file-path".yaml` option as last argument. This `"file-path".yaml` is
+a file of parameters in the `run-options.yaml` format.  The algorithm must
+respect the given seed (assign it everywhere is needed) and output directories.
+It should also allow indipendent runs.
 
 Even though not strictly necessary, we expect the algorithm to generate a file
 in the `run-outcome.yaml` format.

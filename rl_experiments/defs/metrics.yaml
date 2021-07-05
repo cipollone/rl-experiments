@@ -1,9 +1,9 @@
 # Structure of a metrics file
 
-training:  # training metrics
-  {}  # stats.yaml format
+training: stats.yaml  # training metrics
 evaluation:  # evaluation metrics
-  episode: {}  # episode is the moment when evaluation started to stats.yaml format
+  episode: stats.yaml  # episode is the training episode number at which
+                       # these statistics were collected
 
 duration: 0.0  # total training time in seconds
 samples: 0  # total number of transitions oberved from the real environment

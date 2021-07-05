@@ -3,8 +3,8 @@
 name: experiment  # any name for this experiment
 comment: comment  # the purpose of the experiment
 
-environment: {}  # format of an environment.yaml
-algorithm: {}  # format of an algorithm.yaml
+environment: environment.yaml  # environment definition
+algorithm: algorithm.yaml  # algorithm definition
 
 evaluation:
   frequency: 0  # number of episodes between each evaluation

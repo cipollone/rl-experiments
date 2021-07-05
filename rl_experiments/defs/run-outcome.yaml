@@ -2,4 +2,4 @@
 
 start: ""  # start date of the run
 end: ""  # end date of the run
-metrics: {}  # format of a metrics.yaml
+metrics: metrics.yaml

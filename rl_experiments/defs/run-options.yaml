@@ -1,7 +1,7 @@
 # Format of the parameters file that we pass to the main command
 
-environment: {}  # see environment.yaml
-algorithm: {}  # see algorithm.yaml
+environment: environment.yaml  # environment definition
+algorithm: algorithm.yaml  # algorithm definition
 evaluation:
   frequency: 0  # number of episodes between each evaluation
   episodes: 0  # number of episodes to evaluate
@@ -12,4 +12,4 @@ logs-dir: ""  # a path where to save logs. We expect to find
 
 # About this software
 rl-experiments:
-  version: 0.1.0  # Current version of rl_experiments
+  version: 0.1.2  # Current version of rl_experiments
