@@ -5,10 +5,13 @@ import subprocess
 import tempfile
 import time
 from pathlib import Path
+from typing import Tuple
 
 import pkg_resources
 import yaml
 from training_paths import paths as training_paths
+
+storage = list()
 
 
 def start(experiment_file: str):
@@ -19,14 +22,16 @@ def start(experiment_file: str):
     with open(experiment_file) as f:
         params = yaml.safe_load(f)
 
+    # Get algorithm info, if not given
+    alg = params["algorithm"]
+    if alg["commit"] is None or alg["diff"] is None:
+        alg["commit"], alg["diff"] = get_git_infos(Path.cwd())
+
     # Run all
     processes = []
-    proc_data = []
     for i in range(params["n-runs"]):
-        proc, data = start_run(
-            params, run_number=i, experiment_file=experiment_file)
-        processes.append(proc)
-        proc_data.append(data)
+        processes.append(
+            start_run(params, run_number=i, experiment_file=experiment_file))
 
     # Wait all
     while any((proc.poll() is None for proc in processes)):
@@ -99,5 +104,21 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     proc = subprocess.Popen(run_command, shell=True)
 
     # Ret
-    data = {options_file}
-    return proc, data
+    storage.append(options_file)
+    return proc
+
+
+def get_git_infos(directory: Path) -> Tuple[str, str]:
+    """Return git information of the repository in directory."""
+    # Get info
+    commit = subprocess.check_output(
+        ("git", "rev-parse", "HEAD"), cwd=directory).decode("utf-8").strip()
+    diff = subprocess.check_output(
+        ("git", "diff", "-p"), cwd=directory).decode("utf-8")
+
+    # Copy diff to file
+    diff_file = tempfile.NamedTemporaryFile(suffix="-diff.patch", mode="w+")
+    diff_file.write(diff)
+    diff_file.flush()
+    storage.append(diff_file)
+    return commit, diff_file.name
