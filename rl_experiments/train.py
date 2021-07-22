@@ -55,6 +55,9 @@ def start_run(params: dict, run_number: int, experiment_file: str):
         add=(run_number != 0),
     )
 
+    # Print the current run info
+    print(f"> Running with outputs: {models_path.parent}")
+
     # Compose run-options
     run_options = dict(params)
     run_command = run_options.pop("run-command")
@@ -88,15 +91,19 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     with open(logs_path / "run-command.sh", "w") as f:
         f.write(run_command_comment + run_command)
     if params["environment"]["diff"]:
+        env_out_diff = logs_path / "environment-diff.patch"
         shutil.copy(
             params["environment"]["diff"],
-            logs_path / "environment-diff.patch",
+            env_out_diff,
         )
+        params["environment"]["diff"] = env_out_diff
     if params["algorithm"]["diff"]:
+        alg_out_diff = logs_path / "algorithm-diff.patch"
         shutil.copy(
             params["algorithm"]["diff"],
-            logs_path / "algorithm-diff.patch",
+            alg_out_diff,
         )
+        params["algorithm"]["diff"] = alg_out_diff
 
     # Launch
     print("Executing:", run_command)
