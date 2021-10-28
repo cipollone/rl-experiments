@@ -96,14 +96,14 @@ def start_run(params: dict, run_number: int, experiment_file: str):
             params["environment"]["diff"],
             env_out_diff,
         )
-        params["environment"]["diff"] = env_out_diff
+        params["environment"]["diff"] = str(env_out_diff)
     if params["algorithm"]["diff"]:
         alg_out_diff = logs_path / "algorithm-diff.patch"
         shutil.copy(
             params["algorithm"]["diff"],
             alg_out_diff,
         )
-        params["algorithm"]["diff"] = alg_out_diff
+        params["algorithm"]["diff"] = str(alg_out_diff)
 
     # Launch
     print("Executing:", run_command)
