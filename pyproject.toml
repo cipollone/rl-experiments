@@ -7,9 +7,9 @@ include = ["**/*.yaml"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-PyYAML = "^5.4.1"
 training-paths = {git = "https://github.com/cipollone/training-paths.git"}
 setuptools = "^56.2.0"
+PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.22.0"
