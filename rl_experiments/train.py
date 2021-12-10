@@ -121,7 +121,7 @@ def get_git_infos(directory: Path) -> Tuple[str, str]:
     commit = subprocess.check_output(
         ("git", "rev-parse", "HEAD"), cwd=directory).decode("utf-8").strip()
     diff = subprocess.check_output(
-        ("git", "diff", "-p"), cwd=directory).decode("utf-8")
+        ("git", "diff", "-p", "HEAD"), cwd=directory).decode("utf-8")
 
     # Copy diff to file
     diff_file = tempfile.NamedTemporaryFile(suffix="-diff.patch", mode="w+")
