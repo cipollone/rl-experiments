@@ -68,6 +68,7 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     run_options["seed"] = seed
     run_options["model-dir"] = str(models_path)
     run_options["logs-dir"] = str(logs_path)
+    run_options["run-id"] = run_number
 
     # Add about this software
     run_options["rl-experiments"] = dict(

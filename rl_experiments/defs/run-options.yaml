@@ -6,6 +6,7 @@ evaluation:
   frequency: 0  # number of episodes between each evaluation
   episodes: 0  # number of episodes to evaluate
 seed: 0  # global seed to be set everywhere
+run-id: 0  # An identifier of the current run. Runs are increasing numbers from 0
 model-dir: ""  # a path where to save agent models
 logs-dir: ""  # a path where to save logs. We expect to find
               #   a run-outcome.yaml file here after the run.
