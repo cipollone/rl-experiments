@@ -7,14 +7,16 @@ import time
 from pathlib import Path
 from typing import Tuple
 
-import pkg_resources
 import yaml
-from training_paths import paths as training_paths
+
+import rl_experiments
+import rl_experiments.paths as training_paths
+
 
 storage = list()
 
 
-def start(experiment_file: str):
+def start(experiment_file: str, yes: bool):
     """Start an experiment."""
 
     # Load experiment file
@@ -24,21 +26,26 @@ def start(experiment_file: str):
 
     # Get algorithm info, if not given
     alg = params["algorithm"]
-    if alg["commit"] is None or alg["diff"] is None:
+    if (
+        "commit" not in alg
+        or "diff" not in alg
+        or alg["commit"] is None
+        or alg["diff"] is None
+    ):
         alg["commit"], alg["diff"] = get_git_infos(Path.cwd())
 
     # Run all
     processes = []
     for i in range(params["n-runs"]):
         processes.append(
-            start_run(params, run_number=i, experiment_file=experiment_file))
+            start_run(params, run_number=i, experiment_file=experiment_file, yes=yes))
 
     # Wait all
     while any((proc.poll() is None for proc in processes)):
         time.sleep(5)
 
 
-def start_run(params: dict, run_number: int, experiment_file: str):
+def start_run(params: dict, run_number: int, experiment_file: str, yes: bool):
     """Execute a single run."""
 
     # Select a seed for this run
@@ -52,7 +59,7 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     models_path, logs_path = training_paths.get_paths(
         base=output_base,
         scope=params["name"],
-        add=(run_number != 0),
+        add=(run_number != 0) or yes,
     )
 
     # Print the current run info
@@ -71,9 +78,7 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     run_options["run-id"] = run_number
 
     # Add about this software
-    run_options["rl-experiments"] = dict(
-        version=pkg_resources.get_distribution("rl_experiments").version
-    )
+    run_options["rl-experiments"] = rl_experiments.__version__
 
     # Save run options
     options_file = tempfile.NamedTemporaryFile(
@@ -91,14 +96,14 @@ def start_run(params: dict, run_number: int, experiment_file: str):
     shutil.copy(options_file.name, logs_path / "run-options.yaml")
     with open(logs_path / "run-command.sh", "w") as f:
         f.write(run_command_comment + run_command)
-    if params["environment"]["diff"]:
+    if "diff" in params and params["environment"]["diff"]:
         env_out_diff = logs_path / "environment-diff.patch"
         shutil.copy(
             params["environment"]["diff"],
             env_out_diff,
         )
         params["environment"]["diff"] = str(env_out_diff)
-    if params["algorithm"]["diff"]:
+    if "diff" in params and params["algorithm"]["diff"]:
         alg_out_diff = logs_path / "algorithm-diff.patch"
         shutil.copy(
             params["algorithm"]["diff"],

@@ -37,6 +37,12 @@ def main():
         required=True,
         help="an experiment.yaml file"
     )
+    train_parser.add_argument(
+        "-y",
+        "--yes",
+        action="store_true",
+        help="do not require any confirmation"
+    )
 
     args = parser.parse_args()
 
@@ -44,7 +50,7 @@ def main():
     if args.op == "show-format":
         formats.print_format(args.file, merge=not args.comment)
     elif args.op == "train":
-        train.start(args.experiment)
+        train.start(args.experiment, args.yes)
     else:
         print("Nothing to do")
 
