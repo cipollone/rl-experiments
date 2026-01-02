@@ -96,14 +96,15 @@ def start_run(params: dict, run_number: int, experiment_file: str, yes: bool):
     shutil.copy(options_file.name, logs_path / "run-options.yaml")
     with open(logs_path / "run-command.sh", "w") as f:
         f.write(run_command_comment + run_command)
-    if "diff" in params and params["environment"]["diff"]:
+    if params["environment"].get("diff"):
         env_out_diff = logs_path / "environment-diff.patch"
         shutil.copy(
             params["environment"]["diff"],
             env_out_diff,
         )
         params["environment"]["diff"] = str(env_out_diff)
-    if "diff" in params and params["algorithm"]["diff"]:
+    
+    if params["algorithm"].get("diff"):
         alg_out_diff = logs_path / "algorithm-diff.patch"
         shutil.copy(
             params["algorithm"]["diff"],

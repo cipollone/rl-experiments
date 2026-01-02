@@ -15,7 +15,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ipython",
-    "black"
+    "black",
+    "debugpy (>=1.8.19,<2.0.0)"
 ]
 
 
